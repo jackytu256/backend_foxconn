@@ -1,7 +1,7 @@
 CREATE TABLE img(
     id serial NOT NULL,
     path character(65),
-    ts character(18)
+    ts float
 )WITH (OIDS = FALSE);
 CREATE TABLE lbl(
     id serial NOT NULL,
@@ -40,8 +40,20 @@ CREATE TABLE attribs(
     x float, 
     y float, 
     w float, 
-    h float
+    h float,
+    tag integer
 )WITH (OIDS = FALSE);
+CREATE TABLE devs
+(
+id serial NOT NULL,
+name character(16)
+)
+WITH (
+OIDS = FALSE
+);
+
+ALTER TABLE devs
+OWNER to postgres;
 
 ALTER TABLE img
   OWNER TO postgres;

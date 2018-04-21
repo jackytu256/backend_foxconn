@@ -7,6 +7,12 @@ from flask_cors import CORS
 import redis
 app = Flask(__name__)
 cors = CORS(app)
+
+
+@app.route('/hello', methods=['GET', 'HOST'])
+def hello():
+    return 'hello world'
+
 @app.route('/save', methods=['GET', 'POST'])
 def save():
     a = Producer('doSave') 
@@ -98,6 +104,6 @@ def getRep():
         return res
     except Exception, e:
         print e
-    return '{"hello":1}'
+    return '{"code":"failure"}'
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=7788)
